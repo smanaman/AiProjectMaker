@@ -1,10 +1,7 @@
 import { useState } from "react";
-import "./auth.css";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-
 
 export default function AuthPage() {
 
@@ -48,7 +45,6 @@ return;
 
 if(isLogin){
 
-// TOKEN SAVE
 localStorage.setItem("token",data.token);
 
 toast.success("Login Successful");
@@ -72,54 +68,83 @@ toast.error("Server Error");
 };
 
 return (
-<div className="auth-container">
 
-<div className="auth-left">
-<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c" alt="auth"/>
+<div className="container-fluid min-vh-100">
+
+<div className="row min-vh-100">
+
+{/* LEFT IMAGE */}
+<div className="col-lg-6 d-none d-lg-block p-0">
+
+<img
+src="https://images.unsplash.com/photo-1555066931-4365d14bab8c"
+alt="auth"
+className="img-fluid w-100 h-100"
+style={{objectFit:"cover"}}
+/>
+
 </div>
 
-<div className="auth-right">
+{/* RIGHT FORM */}
+<div className="col-lg-6 d-flex align-items-center justify-content-center">
 
-<h2>{isLogin ? "Login" : "Signup"}</h2>
+<div className="w-100" style={{maxWidth:"420px"}}>
+
+<h2 className="text-center fw-bold mb-4">
+{isLogin ? "Login" : "Signup"}
+</h2>
 
 <form onSubmit={handleSubmit}>
 
 {!isLogin && (
+
 <input 
 type="text" 
 placeholder="Name"
+className="form-control mb-3 form-control-lg"
 value={name}
 onChange={(e)=>setName(e.target.value)}
+required
 />
+
 )}
 
 <input 
 type="email" 
 placeholder="Email"
+className="form-control mb-3 form-control-lg"
 value={email}
 onChange={(e)=>setEmail(e.target.value)}
+required
 />
 
 <input 
 type="password" 
 placeholder="Password"
+className="form-control mb-3 form-control-lg"
 value={password}
 onChange={(e)=>setPassword(e.target.value)}
+required
 />
 
-<button>
+<button className="btn btn-primary w-100 btn-lg">
+
 {isLogin ? "Login" : "Signup"}
+
 </button>
 
 </form>
 
-<p>
+<p className="text-center mt-3">
 
 {isLogin ? "Don't have account?" : "Already have account?"}
 
-<span onClick={()=>setIsLogin(!isLogin)}>
+<span 
+style={{color:"#6366f1",cursor:"pointer",marginLeft:"6px",fontWeight:"600"}}
+onClick={()=>setIsLogin(!isLogin)}
+>
 
-{isLogin ? " Signup" : " Login"}
+{isLogin ? "Signup" : "Login"}
 
 </span>
 
@@ -127,8 +152,13 @@ onChange={(e)=>setPassword(e.target.value)}
 
 </div>
 
+</div>
+
+</div>
+
 <ToastContainer position="top-right" autoClose={2000} />
 
 </div>
+
 );
 }
