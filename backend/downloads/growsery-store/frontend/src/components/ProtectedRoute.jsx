@@ -1,0 +1,26 @@
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import Loader from './Loader';
+
+const ProtectedRoute = ({ children, adminOnly = false }) => {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (!user) {
+    // User not authenticated, redirect to login page
+    return <Navigate to="/login" replace />;
+  }
+
+  if (adminOnly && !user.isAdmin) {
+    // User is not an admin and the route requires admin access
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
+};
+
+export default ProtectedRoute;
