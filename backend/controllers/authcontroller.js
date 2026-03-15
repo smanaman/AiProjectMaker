@@ -384,7 +384,7 @@ Escape newline with \\n.
     await createZip(baseDir, zipPath);
 
     console.log("5. Project Generation Complete!");
-    const downloadLink = `http://localhost:5000/downloads/${safeProjectName}/${zipName}`;
+    const downloadLink = `https://aiprojectmaker-vcp5.onrender.com/downloads/${safeProjectName}/${zipName}`;
     try {
 
       await Project.create({

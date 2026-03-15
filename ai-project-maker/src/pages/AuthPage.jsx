@@ -21,12 +21,15 @@ e.preventDefault();
 try {
 
 const url = isLogin 
-? "http://localhost:5000/api/login"
-: "http://localhost:5000/api/register";
+? "https://aiprojectmaker-vcp5.onrender.com/api/login"
+: "https://aiprojectmaker-vcp5.onrender.com/api/register";
 
 const bodyData = isLogin
 ? { email, password }
 : { name, email, password };
+
+console.log("API URL:", url);
+console.log("BODY:", bodyData);
 
 const res = await fetch(url,{
 method:"POST",

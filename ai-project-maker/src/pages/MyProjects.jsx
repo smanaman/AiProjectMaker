@@ -36,7 +36,7 @@ const MyProjects = () => {
     }
 
 
-      const res = await axios.get("http://localhost:5000/api/myprojects", {
+      const res = await axios.get("https://aiprojectmaker-vcp5.onrender.com/api/myprojects", {
         headers: {
           Authorization: `Bearer ${token}`
         }

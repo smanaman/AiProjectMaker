@@ -58,7 +58,7 @@ function Form() {
       formDataObj.append("pages", JSON.stringify(formData.pages));
       formDataObj.append("features", JSON.stringify(formData.features));
 
-      const res = await fetch("http://localhost:5000/api/create", {
+      const res = await fetch("https://aiprojectmaker-vcp5.onrender.com/api/create", {
 
         method: "POST",
 
