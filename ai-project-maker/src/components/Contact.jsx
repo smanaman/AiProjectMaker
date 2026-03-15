@@ -1,18 +1,16 @@
-import React, { useState } from 'react'; // FIX
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
-import { toast } from "react-toastify"; // FIX
+import { toast } from "react-toastify";
 
 const Contact = () => {
 
-  // FIX: form state
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: ""
   });
 
-  // FIX: handle input change
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -20,7 +18,6 @@ const Contact = () => {
     });
   };
 
-  // FIX: submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -37,14 +34,14 @@ const Contact = () => {
       const data = await res.json();
 
       if (res.ok) {
-        toast.success("Message sent successfully ✅"); // FIX
+        toast.success("Message sent successfully ✅");
         setFormData({
           name: "",
           email: "",
           message: ""
         });
       } else {
-        toast.error(data.message || "Failed to send message"); // FIX
+        toast.error(data.message || "Failed to send message");
       }
 
     } catch (error) {
@@ -54,69 +51,91 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-5 bg-white">
-      <div className="container py-5">
-        <div className="text-center mb-5">
-          <motion.h2 
-            initial={{ opacity: 0 }} 
-            whileInView={{ opacity: 1 }} 
-            className="display-6 fw-bold"
+      <div className="container py-4 py-md-5">
+
+        {/* HEADER */}
+        <div className="text-center mb-4 mb-md-5">
+
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="fw-bold"
+            style={{ fontSize: "clamp(1.8rem,3vw,2.5rem)" }}
           >
             Get in Touch
           </motion.h2>
-          <p className="text-muted">Fill out the form below and we'll get back to you.</p>
-        </div>
-        
-        <div className="row justify-content-center">
-          <div className="col-md-8">
 
-            {/* FIX: onSubmit changed */}
+          <p className="text-muted px-2">
+            Fill out the form below and we'll get back to you.
+          </p>
+
+        </div>
+
+        {/* FORM */}
+        <div className="row justify-content-center">
+
+          <div className="col-12 col-md-10 col-lg-8">
+
             <form onSubmit={handleSubmit}>
 
-              <div className="row g-3">
+              <div className="row g-3 g-md-4">
 
-                <div className="col-md-6">
+                {/* NAME */}
+                <div className="col-12 col-md-6">
                   <input
                     type="text"
-                    name="name" // FIX
-                    value={formData.name} // FIX
-                    onChange={handleChange} // FIX
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Full Name"
                     className="form-control form-control-lg border-2 shadow-none"
                     required
                   />
                 </div>
 
-                <div className="col-md-6">
+                {/* EMAIL */}
+                <div className="col-12 col-md-6">
                   <input
                     type="email"
-                    name="email" // FIX
-                    value={formData.email} // FIX
-                    onChange={handleChange} // FIX
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="Email Address"
                     className="form-control form-control-lg border-2 shadow-none"
                     required
                   />
                 </div>
 
+                {/* MESSAGE */}
                 <div className="col-12">
                   <textarea
                     rows="4"
-                    name="message" // FIX
-                    value={formData.message} // FIX
-                    onChange={handleChange} // FIX
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="Your Message"
                     className="form-control form-control-lg border-2 shadow-none"
+                    style={{ resize: "none" }}
                     required
                   ></textarea>
                 </div>
 
+                {/* BUTTON */}
                 <div className="col-12">
+
                   <button
-                    type="submit" // FIX
+                    type="submit"
                     className="btn btn-primary btn-lg w-100 fw-bold py-3 d-flex align-items-center justify-content-center gap-2"
+                    style={{
+                      background: "linear-gradient(90deg,#6366f1,#9333ea)",
+                      border: "none"
+                    }}
                   >
-                    <Send size={18} /> Send Message
+                    <Send size={18} />
+                    Send Message
                   </button>
+
                 </div>
 
               </div>
@@ -124,7 +143,9 @@ const Contact = () => {
             </form>
 
           </div>
+
         </div>
+
       </div>
     </section>
   );

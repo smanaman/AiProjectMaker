@@ -49,7 +49,7 @@ function Header() {
 
   return (
     <nav className="navbar navbar-expand-lg bg-white border-bottom shadow-sm fixed-top">
-      <div className="container">
+      <div className="container px-3">
 
         {/* LOGO */}
         <Link
@@ -70,18 +70,20 @@ function Header() {
           </span>
         </Link>
 
+        {/* TOGGLER */}
         <button
           className="navbar-toggler"
+          type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navMenu"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navMenu">
+        <div className="collapse navbar-collapse mt-3 mt-lg-0" id="navMenu">
 
           {/* NAV LINKS */}
-          <ul className="navbar-nav mx-auto gap-lg-3">
+          <ul className="navbar-nav mx-auto gap-lg-3 text-center text-lg-start">
 
             <li className="nav-item">
               <Link className="nav-link fw-semibold" to="/">
@@ -109,16 +111,23 @@ function Header() {
 
           </ul>
 
+          {/* RIGHT SIDE */}
           {!token ? (
-            <button
-              className="btn btn-outline-primary rounded-pill px-4 fw-semibold"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </button>
-          ) : (
-            <div className="d-flex align-items-center gap-3">
 
+            <div className="d-flex justify-content-center justify-content-lg-end">
+              <button
+                className="btn btn-outline-primary rounded-pill px-4 fw-semibold"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </button>
+            </div>
+
+          ) : (
+
+            <div className="d-flex flex-column flex-lg-row align-items-center gap-3 mt-3 mt-lg-0">
+
+              {/* START BUTTON */}
               <button
                 className="btn btn-primary rounded-pill px-4 fw-semibold"
                 onClick={handleStart}
@@ -159,9 +168,10 @@ function Header() {
                       position: "absolute",
                       right: 0,
                       top: "55px",
-                      width: "200px",
+                      width: "220px",
                       borderRadius: "12px",
                       border: "none",
+                      zIndex: 999,
                     }}
                   >
                     <div className="card-body">
@@ -204,6 +214,7 @@ function Header() {
               </div>
 
             </div>
+
           )}
         </div>
       </div>
