@@ -6,7 +6,7 @@ export const generateAIProject = async (prompt) => {
   try {
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY ||'AIzaSyDbtED7bDQvNMjGk6CY5K7VLH6UX0zh45k'}`,
       {
         method: "POST",
         headers: {
