@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply transition-colors duration-300 ease-in-out;
+}
+
+/* Override default styling for dark mode specific elements if needed */
+.dark body {
+  @apply bg-darkBg text-darkText;
+}
+
+.dark .card {
+  @apply bg-gray-800 text-darkText;
+}
+
+/* Example of a custom button style */
+.btn-primary {
+  @apply bg-primary hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out;
+}
+
+.btn-secondary {
+  @apply bg-secondary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out;
+}

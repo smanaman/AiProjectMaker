@@ -58,16 +58,17 @@ function Form() {
       formDataObj.append("pages", JSON.stringify(formData.pages));
       formDataObj.append("features", JSON.stringify(formData.features));
 
-    const res = await fetch(
-"https://aiprojectmaker-vcp5.onrender.com/api/create",
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json",
-Authorization:`Bearer ${token}`
-},
-body:JSON.stringify(formData)
-});
+      const res = await fetch("https://aiprojectmaker-vcp5.onrender.com/api/create", {
+
+        method: "POST",
+
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+
+        body: formDataObj
+
+      });
 
       const data = await res.json();
 
